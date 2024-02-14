@@ -7,6 +7,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -57,7 +58,8 @@ fun Artwork(
             modifier = Modifier.padding(bottom = 64.dp)
         )
         ArtworkInfo(
-            modifier = Modifier.padding(bottom = 16.dp)
+            modifier = Modifier
+                .padding(bottom = 32.dp)
         )
         ButtonRow(
             modifier = Modifier.padding(bottom = 8.dp)
@@ -95,6 +97,7 @@ fun ArtworkInfo(
         modifier = modifier
             .fillMaxWidth()
             .background(Color.LightGray)
+            .padding(16.dp)
     ) {
         Text(
             fontSize = 25.sp ,
@@ -110,12 +113,23 @@ fun ArtworkInfo(
 fun ButtonRow(
     modifier: Modifier = Modifier
 ) {
-    Row(modifier = modifier) {
-        Button(onClick = { /*TODO*/ }) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween
 
+    ) {
+        Button(
+            onClick = { /*TODO*/ },
+            contentPadding = PaddingValues(horizontal = 40.dp)
+        ) {
+            Text(text = "Previous")
         }
-        Button(onClick = { /*TODO*/ }) {
-
+        Button(
+            onClick = { /*TODO*/ },
+            contentPadding = PaddingValues(horizontal = 40.dp)
+        ) {
+            Text(text = "Next")
         }
     }
 }
