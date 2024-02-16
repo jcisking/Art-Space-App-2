@@ -19,9 +19,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -47,13 +52,26 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ArtSpaceApp() {
+    var artworkPiece by remember{ mutableStateOf(1) }
 
-    Artwork(
+    when (artworkPiece) {
+        1 -> {
+            Artwork(
+                imageRes = ArtworkDataClass. ,
+                descriptionRes = ,
+                artistRes = ,
+                onPrevious = { /*TODO*/ },
+                onNext = { /*TODO*/ })
+        }
+    }
 
-    )
+
 }
 @Composable
 fun Artwork(
+    imageRes: Int,
+    descriptionRes: Int,
+    artistRes: Int,
     onPrevious: () -> Unit,
     onNext: () -> Unit,
     modifier: Modifier = Modifier
@@ -66,10 +84,13 @@ fun Artwork(
     ) {
 
         ArtworkImage(
+            imageRes = imageRes,
             modifier = Modifier
                 .padding(bottom = 72.dp)
         )
         ArtworkInfo(
+            descriptionRes = descriptionRes,
+            artistRes = artistRes,
             modifier = Modifier
                 .padding(bottom = 32.dp)
         )
@@ -84,6 +105,7 @@ fun Artwork(
 
 @Composable
 fun ArtworkImage(
+    imageRes: Int,
     modifier: Modifier = Modifier
 ) {
     Surface(
@@ -95,7 +117,7 @@ fun ArtworkImage(
             modifier = Modifier
                 .padding(32.dp),
             painter = painterResource(
-                id = R.drawable.darren_and_lovee
+                id = imageRes
             ),
             contentDescription = null
         )
@@ -104,6 +126,8 @@ fun ArtworkImage(
 
 @Composable
 fun ArtworkInfo(
+    descriptionRes: Int,
+    artistRes: Int,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -114,10 +138,10 @@ fun ArtworkInfo(
     ) {
         Text(
             fontSize = 25.sp ,
-            text = "Still Life of Blue Rose and Other Flowers"
+            text = stringResource(id = descriptionRes)
         )
         Text(
-            text = "Owen Scott (2021)"
+            text = stringResource(id = artistRes)
         )
     }
 }
