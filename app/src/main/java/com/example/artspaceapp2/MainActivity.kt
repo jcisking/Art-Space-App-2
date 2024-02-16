@@ -9,8 +9,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -55,15 +57,17 @@ fun Artwork(
     ) {
 
         ArtworkImage(
-            modifier = Modifier.padding(bottom = 64.dp)
+            modifier = Modifier
+                .padding(bottom = 72.dp)
         )
         ArtworkInfo(
             modifier = Modifier
                 .padding(bottom = 32.dp)
         )
+//        Spacer(modifier = Modifier.height(62.dp))
         ButtonRow(
-            modifier = Modifier.padding(bottom = 8.dp)
-
+            modifier = Modifier
+                .padding(bottom = 12.dp)
         )
     }
 }
@@ -76,11 +80,10 @@ fun ArtworkImage(
         modifier = modifier,
         shadowElevation = 15.dp,
         color = Color.White,
-//            border = BorderStroke(6.dp, Color.LightGray)
     ) {
         Image(
             modifier = Modifier
-                .padding(20.dp),
+                .padding(32.dp),
             painter = painterResource(
                 id = R.drawable.placeholder
             ),
@@ -97,7 +100,7 @@ fun ArtworkInfo(
         modifier = modifier
             .fillMaxWidth()
             .background(Color.LightGray)
-            .padding(16.dp)
+            .padding(24.dp)
     ) {
         Text(
             fontSize = 25.sp ,
