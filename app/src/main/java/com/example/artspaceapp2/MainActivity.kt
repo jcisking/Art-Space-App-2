@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -38,11 +39,17 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                    Artwork()
+                    ArtSpaceApp()
                 }
             }
         }
     }
+}
+
+@Composable
+fun ArtSpaceApp() {
+
+    Artwork()
 }
 @Composable
 fun Artwork(
@@ -141,6 +148,28 @@ data class Artwork(
     @StringRes val description: Int,
     @StringRes val artist: Int,
 ) {
+    var artworkList: MutableList<Artwork> = mutableListOf(
+        Artwork(
+            imageRes = R.drawable.darren_and_lovee,
+            description = R.string.darren_and_lovee_chillin,
+            artist = R.string.bobby_kel
+        ),
+        Artwork(
+            imageRes = R.drawable.darren_on_knee,
+            description = R.string.curiosity,
+            artist = R.string.some_dude
+        ),
+        Artwork(
+            imageRes = R.drawable.darren_looking_at_camera,
+            description = R.string.stare_down,
+            artist = R.string.some_dude
+        ),
+        Artwork(
+            imageRes = R.drawable.darren_looking_down,
+            description = R.string.what_is_that,
+            artist = R.string.some_other_guy
+        )
+    )
 
 }
 

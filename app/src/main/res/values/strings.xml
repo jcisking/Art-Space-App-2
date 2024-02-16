@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Art Space App 2</string>
+    <string name="darren_and_lovee_chillin">Darren and Lovee chillin\'</string>
+    <string name="bobby_kel">Bobby Kel</string>
+    <string name="curiosity">Curiosity</string>
+    <string name="some_dude">Some dude</string>
+    <string name="stare_down">Stare down</string>
+    <string name="unknown">Unknown</string>
+    <string name="what_is_that">What\'s that?</string>
+    <string name="some_other_guy">Some other guy</string>
 </resources>
