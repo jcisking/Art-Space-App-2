@@ -22,7 +22,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -49,10 +48,14 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ArtSpaceApp() {
 
-    Artwork()
+    Artwork(
+
+    )
 }
 @Composable
 fun Artwork(
+    onPrevious: () -> Unit,
+    onNext: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -70,8 +73,9 @@ fun Artwork(
             modifier = Modifier
                 .padding(bottom = 32.dp)
         )
-//        Spacer(modifier = Modifier.height(62.dp))
         ButtonRow(
+            onPrevious = onPrevious,
+            onNext = onNext,
             modifier = Modifier
                 .padding(bottom = 12.dp)
         )
@@ -120,6 +124,8 @@ fun ArtworkInfo(
 
 @Composable
 fun ButtonRow(
+    onPrevious: () -> Unit,
+    onNext: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -129,13 +135,13 @@ fun ButtonRow(
 
     ) {
         Button(
-            onClick = { /*TODO*/ },
+            onClick = onPrevious,
             contentPadding = PaddingValues(horizontal = 40.dp)
         ) {
             Text(text = "Previous")
         }
         Button(
-            onClick = { /*TODO*/ },
+            onClick = onNext,
             contentPadding = PaddingValues(horizontal = 40.dp)
         ) {
             Text(text = "Next")
@@ -143,34 +149,33 @@ fun ButtonRow(
     }
 }
 
-data class Artwork(
+data class ArtworkDataClass(
     @DrawableRes val imageRes: Int,
     @StringRes val description: Int,
     @StringRes val artist: Int,
 ) {
-    var artworkList: MutableList<Artwork> = mutableListOf(
-        Artwork(
+    var artworkList: MutableList<ArtworkDataClass> = mutableListOf(
+        ArtworkDataClass(
             imageRes = R.drawable.darren_and_lovee,
             description = R.string.darren_and_lovee_chillin,
             artist = R.string.bobby_kel
         ),
-        Artwork(
+        ArtworkDataClass(
             imageRes = R.drawable.darren_on_knee,
             description = R.string.curiosity,
             artist = R.string.some_dude
         ),
-        Artwork(
+        ArtworkDataClass(
             imageRes = R.drawable.darren_looking_at_camera,
             description = R.string.stare_down,
             artist = R.string.some_dude
         ),
-        Artwork(
+        ArtworkDataClass(
             imageRes = R.drawable.darren_looking_down,
             description = R.string.what_is_that,
             artist = R.string.some_other_guy
         )
     )
-
 }
 
 
