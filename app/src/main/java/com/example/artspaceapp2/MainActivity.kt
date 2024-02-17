@@ -52,16 +52,45 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ArtSpaceApp() {
+
     var artworkPiece by remember{ mutableStateOf(1) }
 
     when (artworkPiece) {
         1 -> {
             Artwork(
-                imageRes = ArtworkDataClass. ,
-                descriptionRes = ,
-                artistRes = ,
-                onPrevious = { /*TODO*/ },
-                onNext = { /*TODO*/ })
+                imageRes = ArtworkDataClass.artworkList[0].imageRes ,
+                descriptionRes = ArtworkDataClass.artworkList[0].descriptionRes,
+                artistRes = ArtworkDataClass.artworkList[0].artistRes,
+                onPrevious = { artworkPiece = ArtworkDataClass.artworkList.lastIndex + 1 },
+                onNext = { artworkPiece = 2 }
+            )
+        }
+        2 -> {
+            Artwork(
+                imageRes = ArtworkDataClass.artworkList[1].imageRes ,
+                descriptionRes = ArtworkDataClass.artworkList[1].descriptionRes,
+                artistRes = ArtworkDataClass.artworkList[1].artistRes,
+                onPrevious = { artworkPiece = 1 },
+                onNext = { artworkPiece = 3 }
+            )
+        }
+        3 -> {
+            Artwork(
+                imageRes = ArtworkDataClass.artworkList[2].imageRes ,
+                descriptionRes = ArtworkDataClass.artworkList[2].descriptionRes,
+                artistRes = ArtworkDataClass.artworkList[2].artistRes,
+                onPrevious = { artworkPiece = 2 },
+                onNext = { artworkPiece = 4 }
+            )
+        }
+        4 -> {
+            Artwork(
+                imageRes = ArtworkDataClass.artworkList[3].imageRes ,
+                descriptionRes = ArtworkDataClass.artworkList[3].descriptionRes,
+                artistRes = ArtworkDataClass.artworkList[3].artistRes,
+                onPrevious = { artworkPiece = 3 },
+                onNext = { artworkPiece = 1 }
+            )
         }
     }
 
@@ -175,31 +204,34 @@ fun ButtonRow(
 
 data class ArtworkDataClass(
     @DrawableRes val imageRes: Int,
-    @StringRes val description: Int,
-    @StringRes val artist: Int,
+    @StringRes val descriptionRes: Int,
+    @StringRes val artistRes: Int,
 ) {
-    var artworkList: MutableList<ArtworkDataClass> = mutableListOf(
-        ArtworkDataClass(
-            imageRes = R.drawable.darren_and_lovee,
-            description = R.string.darren_and_lovee_chillin,
-            artist = R.string.bobby_kel
-        ),
-        ArtworkDataClass(
-            imageRes = R.drawable.darren_on_knee,
-            description = R.string.curiosity,
-            artist = R.string.some_dude
-        ),
-        ArtworkDataClass(
-            imageRes = R.drawable.darren_looking_at_camera,
-            description = R.string.stare_down,
-            artist = R.string.some_dude
-        ),
-        ArtworkDataClass(
-            imageRes = R.drawable.darren_looking_down,
-            description = R.string.what_is_that,
-            artist = R.string.some_other_guy
+    companion object
+    {
+        var artworkList: MutableList<ArtworkDataClass> = mutableListOf(
+            ArtworkDataClass(
+                imageRes = R.drawable.darren_and_lovee,
+                descriptionRes = R.string.darren_and_lovee_chillin,
+                artistRes = R.string.bobby_kel
+            ),
+            ArtworkDataClass(
+                imageRes = R.drawable.darren_on_knee,
+                descriptionRes = R.string.curiosity,
+                artistRes = R.string.some_dude
+            ),
+            ArtworkDataClass(
+                imageRes = R.drawable.darren_looking_at_camera,
+                descriptionRes = R.string.stare_down,
+                artistRes = R.string.some_dude
+            ),
+            ArtworkDataClass(
+                imageRes = R.drawable.darren_looking_down,
+                descriptionRes = R.string.what_is_that,
+                artistRes = R.string.some_other_guy
+            )
         )
-    )
+    }
 }
 
 
